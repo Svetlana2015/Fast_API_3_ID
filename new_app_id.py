@@ -68,7 +68,9 @@ def predict(datas: Parametres ):
     prediction = clf.predict(df_3)
     prediction = prediction.tolist()
     #probability = clf.predict_proba(df)
-    probability = clf.predict_proba(df_3).max()
+    #probability = clf.predict_proba(df_3).max()
+    threshold = 0.680000
+    probability = clf.predict_proba(df_3)[:,1]> threshold).max()
 
     return {'prediction': prediction[0],
            'probability': probability,
