@@ -65,12 +65,12 @@ def predict(datas: Parametres ):
 
     # Create and return prediction
 
-    prediction = clf.predict(df_3)
-    prediction = prediction.tolist()
-    #probability = clf.predict_proba(df)
-    #probability = clf.predict_proba(df_3).max()
     threshold = 0.680000
-    probability = clf.predict_proba(df_3)[:,1]> threshold).max()
+    prediction = (clf.predict_proba(df_3)[:, 1] > threshold).astype('float')
+
+    #prediction = clf.predict(df_3)
+    #prediction = prediction.tolist()
+    probability = clf.predict_proba(df_3).max()
 
     return {'prediction': prediction[0],
            'probability': probability,
